@@ -65,7 +65,7 @@ footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#7f899b;font-s
 </main>
 <footer><div class="wrap footer"><div>© 2026 SentRules · Independent Outlook add-in</div><div><a href="../">Home</a> · Privacy · Terms · Support</div></div></footer>
 <script>
-const STRIPE_PRIMARY_CHECKOUT_URL='';
+const STRIPE_PRIMARY_CHECKOUT_URL='https://buy.stripe.com/bJe14ndxrfTEgvbaSa8bS00';
 const checkout=document.getElementById('primary-checkout');const note=document.getElementById('checkout-note');
 if(STRIPE_PRIMARY_CHECKOUT_URL){checkout.href=STRIPE_PRIMARY_CHECKOUT_URL}else{checkout.addEventListener('click',e=>{e.preventDefault();note.textContent='Stripe checkout is the next step. No charge link is live yet.'})}
 </script>
