@@ -38,6 +38,12 @@
 .safe{background:linear-gradient(180deg,#090e18,#060911)}.safegrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.check{display:flex;gap:13px}.check span{flex:0 0 auto;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:rgba(145,242,125,.07);border:1px solid rgba(145,242,125,.2);color:var(--green);font-weight:900}.check b{display:block;margin-bottom:2px}.check small{color:#98a3b7}.pricebox{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;border:1px solid rgba(73,217,255,.23);border-radius:26px;padding:30px;background:linear-gradient(145deg,rgba(73,217,255,.07),rgba(121,108,255,.05) 60%,rgba(232,87,255,.05))}.price{font-size:55px;line-height:1;font-weight:950;letter-spacing:-.06em}.price small{font-size:15px;color:var(--muted);letter-spacing:0}.pricebox p{color:var(--muted)}.faq details{border-bottom:1px solid var(--line);padding:17px 0}.faq summary{cursor:pointer;font-weight:850}.faq p{color:var(--muted);margin:9px 0 0}.final{text-align:center;padding:88px 0}.final h2{font-size:clamp(38px,5vw,62px);letter-spacing:-.055em;margin:0 0 10px}.final p{color:var(--muted);font-size:18px}.footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#8792a6;font-size:12px}.footerin{display:flex;justify-content:space-between;gap:20px}.footer a{color:#b8c1d1}
 @media(max-width:760px){.links a:not(.btn){display:none}.hero{padding-top:72px}.grid3,.safegrid,.pricebox,.asks{grid-template-columns:1fr}.footerin{flex-direction:column}.pricebox{text-align:center}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* A returning customer needs a door, and "Start free" is not one -- it offers a
+   trial to somebody who already pays. Quiet on purpose: this is for people who
+   already know what SentRules is, not a rival call to action. */
+.links .signin{color:var(--muted,#9aa7bd);text-decoration:none;font-weight:600}
+.links .signin:hover{color:var(--text,#eef3fb)}
 </style>
 <script type="application/ld+json">
 {
@@ -148,7 +154,7 @@
 </script>
 </head>
 <body id="top">
-<header class="nav"><div class="wrap navin"><a class="brand" href="#top"><img src="/logo-76.png" width="38" height="38" alt="SentRules"><span>SentRules</span></a><nav class="links"><a href="#why">Why</a><a href="#how">How it works</a><a href="#safety">Safety</a><a href="#pricing">Pricing</a><a class="btn primary" href="https://app.sentrules.com/start.html">Start free</a></nav></div></header>
+<header class="nav"><div class="wrap navin"><a class="brand" href="#top"><img src="/logo-76.png" width="38" height="38" alt="SentRules"><span>SentRules</span></a><nav class="links"><a href="#why">Why</a><a href="#how">How it works</a><a href="#safety">Safety</a><a href="#pricing">Pricing</a><a class="signin" href="https://app.sentrules.com/manager.html">Open SentRules</a><a class="btn primary" href="https://app.sentrules.com/start.html">Start free</a></nav></div></header>
 <main>
 
 <section class="hero"><div class="wrap">
@@ -201,6 +207,6 @@
 
 <section class="final"><div class="wrap"><h2>Send it. File it. Move on.</h2><p>One rule for the client you email most. Then your Outlook goes back to being boring.</p><div class="actions"><a class="btn primary" href="https://app.sentrules.com/start.html">Start free for 14 days</a></div></div></section>
 </main>
-<footer class="footer"><div class="wrap footerin"><div>© 2026 SentRules · Independent service for Microsoft Outlook. Not affiliated with Microsoft.</div><div><a href="pricing/">Pricing details</a> · <a href="https://app.sentrules.com/privacy.html">Privacy</a> · <a href="https://app.sentrules.com/terms.html">Terms</a> · <a href="https://app.sentrules.com/support.html">Support</a></div></div></footer>
+<footer class="footer"><div class="wrap footerin"><div>© 2026 SentRules · Independent service for Microsoft Outlook. Not affiliated with Microsoft.</div><div><a href="pricing/">Pricing details</a> · <a href="https://app.sentrules.com/privacy.html">Privacy</a> · <a href="https://app.sentrules.com/terms.html">Terms</a> · <a href="https://app.sentrules.com/support.html">Support</a></div></div> <a href="https://app.sentrules.com/manager.html">Open SentRules</a></footer>
 </body>
 </html>

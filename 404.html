@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>SentRules</title>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<!--
+  Nobody uses the front door.
+
+  People type sentrules.com/manager, /login, /account, /app — whatever they
+  half-remember — and GitHub Pages answered every one of them with a completely
+  blank page. Not a 404 with a message: nothing at all. A paying customer
+  guessing at the address got a white screen and no way forward.
+
+  So this page never shows itself if it can help it. It works out what they
+  were reaching for and sends them there, and only stops to say anything when
+  scripting is off.
+-->
+<style>
+  body{margin:0;background:#080b10;color:#e8eef6;
+       font:15px/1.6 "Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+       display:grid;place-items:center;min-height:100vh;padding:24px}
+  .card{max-width:460px;text-align:center}
+  h1{font-size:20px;margin:0 0 10px}
+  p{color:#8b9bb0;margin:0 0 20px}
+  a{display:inline-block;margin:6px;padding:10px 18px;border-radius:9px;
+    text-decoration:none;font-weight:600}
+  .primary{background:#3aa8ff;color:#04121f}
+  .secondary{border:1px solid #232d3b;color:#e8eef6}
+</style>
+<script>
+  (function () {
+    // Words that mean "I am trying to get into the product", not "I am
+    // browsing the website".
+    var APP = /^(manager|app|login|signin|sign-in|account|rules|billing|subscription|dashboard|home|flightdeck|start|setup|signup)$/i;
+    var first = (location.pathname || '').split('/').filter(Boolean)[0] || '';
+    if (APP.test(first)) {
+      var target = /^(start|setup|signup)$/i.test(first) ? 'start.html' : 'manager.html';
+      location.replace('https://app.sentrules.com/' + target);
+    } else if (first) {
+      // A mistyped marketing page. The homepage is where they were going.
+      location.replace('/');
+    }
+  })();
+</script>
+</head>
+<body>
+  <div class="card">
+    <h1>That address isn&rsquo;t a page</h1>
+    <p>SentRules is still here, though.</p>
+    <a class="primary" href="https://app.sentrules.com/manager.html">Open SentRules</a>
+    <a class="secondary" href="/">sentrules.com</a>
+  </div>
+</body>
+</html>
