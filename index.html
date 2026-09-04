@@ -112,7 +112,7 @@
           "name": "Do I have to install an Outlook add-in?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. SentRules runs as a hosted service. An Outlook ribbon shortcut can be added later as a convenience."
+            "text": "No. SentRules runs as a hosted service. At the end of setup you can add a single &#9881; SentRules folder to your Outlook folder list &mdash; one click there opens your Manager from any Outlook you use, phone included."
           }
         },
         {
@@ -151,7 +151,7 @@
     }
   ]
 }
-</script>
+ The workarounds people live with &mdash; BCC-ing yourself on everything, hashtag rules in signatures, or staying on classic Outlook while its clock runs out &mdash; all cost something every day. SentRules costs one rule, once.</script>
 </head>
 <body id="top">
 <header class="nav"><div class="wrap navin"><a class="brand" href="#top"><img src="/logo-76.png" width="38" height="38" alt="SentRules"><span>SentRules</span></a><nav class="links"><a href="#why">Why</a><a href="#how">How it works</a><a href="#safety">Safety</a><a href="#pricing">Pricing</a><a class="signin" href="https://app.sentrules.com/manager.html">Open SentRules</a><a class="btn primary" href="https://app.sentrules.com/start.html">Start free</a></nav></div></header>
@@ -162,7 +162,7 @@
 <h1><span class="strike">Apply rule on messages I send</span><br><span class="grad">Back.</span></h1>
 <p>Classic Outlook could file the mail you sent. New Outlook can't — and there is still no setting for it. SentRules puts it back: create one rule, keep using Outlook's normal Send button, and the sent copy files itself.</p>
 <div class="actions"><a class="btn primary" href="https://app.sentrules.com/start.html">Start free for 14 days</a><a class="btn ghost" href="#why">Why this happened</a></div>
-<div class="pills"><span class="pill"><b>✓</b> Nothing to install</span><span class="pill"><b>✓</b> Normal Outlook Send</span><span class="pill"><b>✓</b> SentRules never sends mail for you</span></div>
+<div class="pills"><span class="pill"><b>✓</b> Nothing to install</span><span class="pill"><b>✓</b> Normal Outlook Send</span><span class="pill"><b>✓</b> SentRules never sends mail for you</span><span class="pill"><b>✓</b> Personal outlook.com and Microsoft 365 alike</span></div>
 
 <div class="video">
   <video src="sentrules-demo.mp4" poster="sentrules-poster.png" autoplay muted loop playsinline></video>
@@ -190,7 +190,7 @@
 </div>
 </div></section>
 
-<section id="how" class="section"><div class="wrap"><div class="head"><span class="kicker">How it works</span><h2>Set the rule once. Then forget about it.</h2><p>No separate desktop app, no special Send button, and no page that has to stay open.</p></div><div class="grid3"><article class="card"><div class="num">1</div><h3>Connect Outlook</h3><p>Microsoft handles sign-in and consent. SentRules loads the folders already in your mailbox.</p></article><article class="card"><div class="num">2</div><h3>Create one rule</h3><p>Anything sent to <strong>acme.com</strong> goes to your <strong>Clients / Acme</strong> folder.</p></article><article class="card"><div class="num">3</div><h3>Send normally</h3><p>Outlook sends the message. SentRules sees the confirmed sent copy and files it in the background — from any device, including your phone.</p></article></div></div></section>
+<section id="how" class="section"><div class="wrap"><div class="head"><span class="kicker">How it works</span><h2>Set the rule once. Then forget about it.</h2><p>No separate desktop app, no special Send button, and no page that has to stay open.</p></div><div class="grid3"><article class="card"><div class="num">1</div><h3>Connect Outlook</h3><p>Microsoft handles sign-in and consent. SentRules loads the folders already in your mailbox.</p></article><article class="card"><div class="num">2</div><h3>Create one rule</h3><p>Anything sent to <strong>acme.com</strong> goes to your <strong>Clients / Acme</strong> folder &mdash; sent and received mail for a client, finally in the same place.</p></article><article class="card"><div class="num">3</div><h3>Send normally</h3><p>Outlook sends the message. SentRules sees the confirmed sent copy and files it in the background — from any device, including your phone.</p></article></div></div></section>
 
 <section id="safety" class="section safe"><div class="wrap"><div class="head"><span class="kicker">Built to fail safe</span><h2>Automation should never guess with your mail.</h2><p>When Outlook's state is ambiguous, SentRules stops rather than moving something to the wrong place.</p></div><div class="safegrid"><div class="check"><span>✓</span><div><b>Outlook remains the sender</b><small>The service does not request permission to send mail. It only ever moves the copy Outlook already made.</small></div></div><div class="check"><span>✓</span><div><b>Conflicts stop</b><small>If two enabled rules point to different folders, nothing is moved and the copy stays in Sent Items.</small></div></div><div class="check"><span>✓</span><div><b>It will not file into a bin</b><small>Deleted Items, Junk, Drafts and Outbox are refused as destinations, even if you pick one.</small></div></div><div class="check"><span>✓</span><div><b>Secure payment</b><small>Stripe handles card details. SentRules never receives your full card number.</small></div></div></div></div></section>
 
@@ -198,7 +198,7 @@
 
 <section class="section"><div class="wrap faq"><div class="head"><span class="kicker">FAQ</span><h2>Before you connect your mailbox.</h2></div>
 <details open><summary>Why can't Outlook just do this itself?</summary><p>Classic Outlook offered “Apply rule on messages I send.” New Outlook's rules apply to mail you receive. People have been asking Microsoft for the sent-mail equivalent repeatedly — the threads above are a sample. SentRules exists because the answer is still no.</p></details>
-<details><summary>Do I have to install an Outlook add-in?</summary><p>No. SentRules runs as a hosted service. An Outlook ribbon shortcut can be added later as a convenience.</p></details>
+<details><summary>Do I have to install an Outlook add-in?</summary><p>No. SentRules runs as a hosted service. At the end of setup you can add a single &#9881; SentRules folder to your Outlook folder list &mdash; one click there opens your Manager from any Outlook you use, phone included.</p></details>
 <details><summary>Does SentRules send my emails?</summary><p>No. You send from Outlook normally. SentRules only works on the confirmed sent copy afterwards.</p></details>
 <details><summary>What Microsoft permissions does it request?</summary><p>User.Read, Mail.Read and Mail.ReadWrite — enough to identify the account, inspect the sent copy and move it between folders. It does not request Mail.Send.</p></details>
 <details><summary>What if two rules disagree?</summary><p>SentRules does not pick a winner. The sent copy stays in Sent Items until you resolve the conflict.</p></details>
