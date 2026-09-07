@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SentRules Daily Flight Deck</title>
+<style>
+:root{--bg:#070a12;--panel:#101624;--line:#253149;--text:#eef3ff;--muted:#9ba8bf;--cyan:#43d5ff;--green:#5ee39a;--amber:#ffd166;--red:#ff7d8a}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#070a12,#0b1220);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1250px;margin:auto;padding:28px}h1,h2{margin:0 0 8px}h1{font-size:32px}h2{font-size:18px}.sub{color:var(--muted);margin-bottom:24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}.card,.panel{background:rgba(16,22,36,.92);border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 10px 30px #0003}.label{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.value{font-size:28px;font-weight:750;margin-top:6px}.good{color:var(--green)}.warn{color:var(--amber)}.bad{color:var(--red)}.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{margin-bottom:18px}.wide{grid-column:1/-1}.row{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid #1e2940}.row:last-child{border-bottom:0}.row input[type=checkbox]{accent-color:var(--cyan);width:18px;height:18px}.row small{display:block;color:var(--muted);margin-top:3px}.pill{margin-left:auto;padding:4px 9px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px}.bar{height:9px;background:#1d2940;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),#9c6cff)}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #1e2940}th{color:var(--muted);font-size:12px;text-transform:uppercase}button{border:0;border-radius:8px;background:var(--cyan);color:#05101a;padding:9px 13px;font-weight:700;cursor:pointer}button.secondary{background:#202c43;color:var(--text)}input,select{background:#0a101d;border:1px solid var(--line);color:var(--text);border-radius:7px;padding:8px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}.note{color:var(--muted);font-size:13px}.status{font-size:12px;color:var(--green);margin-left:8px}@media(max-width:850px){.grid,.layout{grid-template-columns:1fr 1fr}}@media(max-width:560px){main{padding:16px}.grid,.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>SentRules Daily Flight Deck</h1>
+<div class="sub">One place to run the business in under an hour a day. Last updated: <span id="today"></span></div>
+<div class="toolbar"><label>Date <input id="date" type="date"></label><button onclick="save()">Save day</button><button class="secondary" onclick="resetDay()">Reset day</button><span id="saved" class="status"></span></div>
+<section class="grid">
+<div class="card"><div class="label">Active outreach</div><div id="active" class="value">11</div><div class="note">invitations sent</div></div>
+<div class="card"><div class="label">Replies</div><div id="replies" class="value good">0</div><div class="note">positive + neutral</div></div>
+<div class="card"><div class="label">Paid customers</div><div id="paid" class="value good">1</div><div class="note">$0 recorded revenue</div></div>
+<div class="card"><div class="label">Reply rate</div><div id="rate" class="value warn">0%</div><div class="note">replies ÷ delivered outreach</div></div>
+</section>
+<div class="layout">
+<section class="panel"><h2>Today’s checklist</h2>
+<div class="row"><input type="checkbox" data-task="status"><div><b>Check Stripe and Flight Deck</b><small>Record trials, cancellations, payments, and revenue.</small></div></div>
+<div class="row"><input type="checkbox" data-task="mail"><div><b>Check Gmail replies and bounces</b><small>Log every reply, delivery failure, and requested follow-up.</small></div></div>
+<div class="row"><input type="checkbox" data-task="follow"><div><b>Run scheduled follow-ups</b><small>Only follow up when the due date says to; honor declines.</small></div></div>
+<div class="row"><input type="checkbox" data-task="leads"><div><b>Add today’s qualified leads</b><small>Record source, contact path, fit, and next action.</small></div></div>
+<div class="row"><input type="checkbox" data-task="content"><div><b>Publish or queue one useful proof point</b><small>Demo clip, “Filed by SR” result, or a practical Outlook tip.</small></div></div>
+<div class="row"><input type="checkbox" data-task="log"><div><b>Update the source-of-truth log</b><small>Message IDs, delivery status, responses, and next dates.</small></div></div>
+</section>
+<section class="panel"><h2>Target math</h2>
+<div class="note">45-day target: $1,500. At $39.99/year, that requires 38 annual customers.</div>
+<p>Annual customers <b id="annual">1</b> / 38</p><div class="bar"><i id="annualbar" style="width:2.6%"></i></div>
+<p>Required average pace <b>$33.33/day</b></p>
+<p>Current recorded revenue <b id="revenue">$0.00</b></p>
+<p>Trials started <input id="trials" type="number" min="0" value="0" onchange="save()"></p>
+<p>Conversions <input id="conversions" type="number" min="0" value="0" onchange="save()"></p>
+</section>
+<section class="panel wide"><h2>Scheduled follow-ups</h2><table><thead><tr><th>Lead</th><th>Reason</th><th>Due</th><th>Status</th></tr></thead><tbody id="followups"></tbody></table><div class="toolbar"><input id="f_name" placeholder="Lead"><input id="f_reason" placeholder="Reason"><input id="f_due" type="date"><button onclick="addFollowup()">Add follow-up</button></div></section>
+<section class="panel"><h2>Pipeline and closing rates</h2><table><tbody>
+<tr><td>Invitations sent</td><td><input id="sent" type="number" value="11" onchange="save()"></td></tr>
+<tr><td>Delivered</td><td><input id="delivered" type="number" value="10" onchange="save()"></td></tr>
+<tr><td>Replies</td><td><input id="replyInput" type="number" value="0" onchange="save()"></td></tr>
+<tr><td>Trials started</td><td><input id="trialInput" type="number" value="0" onchange="save()"></td></tr>
+<tr><td>Paid conversions</td><td><input id="paidInput" type="number" value="1" onchange="save()"></td></tr>
+</tbody></table></section>
+<section class="panel"><h2>Daily lead intake</h2><table><thead><tr><th>Date</th><th>New qualified leads</th><th>Contacted</th><th>Notes</th></tr></thead><tbody id="leads"></tbody></table><div class="toolbar"><input id="l_date" type="date"><input id="l_count" type="number" min="0" placeholder="New leads"><input id="l_contacted" type="number" min="0" placeholder="Contacted"><input id="l_notes" placeholder="Notes"><button onclick="addLeadDay()">Add day</button></div></section>
+<section class="panel wide"><h2>Astra Watch — daily activity record</h2><p class="note">Operating instruction for Astra: record every SentRules action here or in the linked source log before the next action. Keep work within the usage budget, avoid paid tools, and preserve one-to-one verified outreach.</p><table><thead><tr><th>Watch item</th><th>What Astra checks</th><th>Next action</th></tr></thead><tbody><tr><td>Revenue</td><td>Stripe payments, trials, cancellations</td><td>Record amount, plan, and date; update target math.</td></tr><tr><td>Traffic</td><td>Cloudflare views and referrals</td><td>Keep sources that produce trials.</td></tr><tr><td>Inbox</td><td>Replies, bounces, auto-replies</td><td>Log IDs and delivery status; replace only permanent bounces.</td></tr><tr><td>Leads</td><td>New qualified Outlook/Microsoft 365 prospects</td><td>Verify contact path and de-duplicate.</td></tr><tr><td>Follow-ups</td><td>Due dates and responses</td><td>Send only when due; honor declines.</td></tr><tr><td>Product</td><td>Trial friction, support questions, deployment alerts</td><td>Fix the smallest revenue-blocking issue first.</td></tr><tr><td>Report</td><td>Completed actions and exceptions</td><td>Update the status log and report concisely.</td></tr></tbody></table></section><section class="panel wide"><h2>Operating rules</h2><p class="note">No paid ads, trading, gambling, or blind mass-mailing. One verified prospect at a time. Every send, bounce, reply, follow-up, trial, and payment is recorded before the next action. The outreach log remains the authority for message IDs and delivery status.</p></section>
+</div></main>
+<script>
+const key='sentrules-flightdeck-v1';let state=JSON.parse(localStorage.getItem(key)||'{}');state.followups=state.followups||[];state.leads=state.leads||[];
+function $(id){return document.getElementById(id)}function today(){return new Date().toISOString().slice(0,10)}
+function render(){let d=state.date||today();$('date').value=d;$('today').textContent=d;['sent','delivered','replyInput','trialInput','paidInput','trials','conversions'].forEach(id=>{if(state[id]!==undefined)$(id).value=state[id]});$('active').textContent=$('sent').value;$('replies').textContent=$('replyInput').value;$('paid').textContent=$('paidInput').value;let rate=Number($('delivered').value)?Math.round(Number($('replyInput').value)/Number($('delivered').value)*100):0;$('rate').textContent=rate+'%';$('annual').textContent=$('paidInput').value;$('annualbar').style.width=Math.min(100,Number($('paidInput').value)/38*100)+'%';$('revenue').textContent='$'+(Number($('paidInput').value)*39.99).toFixed(2);document.querySelectorAll('[data-task]').forEach(x=>x.checked=!!(state.tasks||{})[x.dataset.task]);$('followups').innerHTML=state.followups.map((f,i)=>'<tr><td>'+esc(f.name)+'</td><td>'+esc(f.reason)+'</td><td>'+f.due+'</td><td><select onchange="setFollow('+i+',this.value)"><option '+(f.status==='Open'?'selected':'')+'>Open</option><option '+(f.status==='Done'?'selected':'')+'>Done</option><option '+(f.status==='Declined'?'selected':'')+'>Declined</option></select></td></tr>').join('')||'<tr><td colspan="4" class="note">No follow-ups scheduled.</td></tr>';$('leads').innerHTML=state.leads.map(l=>'<tr><td>'+l.date+'</td><td>'+l.count+'</td><td>'+l.contacted+'</td><td>'+esc(l.notes)+'</td></tr>').join('')||'<tr><td colspan="4" class="note">No daily lead entries yet.</td></tr>'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}function save(){state.date=$('date').value||today();['sent','delivered','replyInput','trialInput','paidInput','trials','conversions'].forEach(id=>state[id]=Number($(id).value)||0);state.tasks=state.tasks||{};document.querySelectorAll('[data-task]').forEach(x=>state.tasks[x.dataset.task]=x.checked);localStorage.setItem(key,JSON.stringify(state));render();$('saved').textContent='Saved';setTimeout(()=>$('saved').textContent='',1500)}function resetDay(){if(confirm('Reset today’s checklist only?')){state.tasks={};save()}}function addFollowup(){if(!$('f_name').value||!$('f_due').value)return;state.followups.push({name:$('f_name').value,reason:$('f_reason').value,due:$('f_due').value,status:'Open'});['f_name','f_reason','f_due'].forEach(id=>$(id).value='');save()}function setFollow(i,v){state.followups[i].status=v;save()}function addLeadDay(){if(!$('l_date').value)return;state.leads.push({date:$('l_date').value,count:Number($('l_count').value)||0,contacted:Number($('l_contacted').value)||0,notes:$('l_notes').value});['l_date','l_count','l_contacted','l_notes'].forEach(id=>$(id).value='');save()}render();
+</script></body></html>
+
