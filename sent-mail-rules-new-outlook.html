@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="New Outlook removed rules for sent messages. Here is every option that actually works in 2026 — staying on classic, the BCC-yourself workaround, Power Automate, and SentRules — with the honest costs of each.">
+<title>Rules for Sent Emails in New Outlook: Every Option That Works (2026) — SentRules</title>
+<link rel="canonical" href="https://sentrules.com/sent-mail-rules-new-outlook.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Rules for sent emails in new Outlook: every option that works (2026)">
+<meta property="og:description" content="Microsoft removed 'Apply rule on messages I send.' The honest map of what still works — free workarounds included.">
+<meta property="og:image" content="https://sentrules.com/sentrules-poster.png">
+<meta property="og:url" content="https://sentrules.com/sent-mail-rules-new-outlook.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SentRules">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#05070d;--panel:#0d1422;--ink:#f7f9ff;--muted:#aab4c7;--line:rgba(255,255,255,.11);--cyan:#49d9ff;--violet:#796cff;--pink:#e857ff;--green:#91f27d;--warn:#ffca67;--red:#ff7d7d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 82% -4%,rgba(232,87,255,.14),transparent 32rem),radial-gradient(circle at 8% 12%,rgba(73,217,255,.12),transparent 30rem),var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+.nav{position:sticky;top:0;z-index:20;background:rgba(5,7,13,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.navin{height:72px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-size:21px;font-weight:900;letter-spacing:-.04em}
+.brand img{width:38px;height:38px;border-radius:10px}
+.links{margin-left:auto;display:flex;align-items:center;gap:20px;color:#bdc6d7;font-size:13px;font-weight:750}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;border:1px solid var(--line);font-weight:900}
+.primary{border:0;background:linear-gradient(115deg,var(--cyan),var(--violet) 56%,var(--pink));color:#061019;box-shadow:0 16px 40px rgba(73,217,255,.16)}
+.ghost{background:rgba(255,255,255,.03)}
+.signin{color:#9aa7bd;font-weight:600}.signin:hover{color:#eef3fb}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--warn);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.eyebrow:before{content:"";width:7px;height:7px;border-radius:99px;background:var(--warn);box-shadow:0 0 14px var(--warn)}
+.grad{background:linear-gradient(90deg,var(--cyan),#93a2ff 48%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.arthero{padding:76px 0 30px;max-width:860px}
+.arthero h1{font-size:clamp(34px,5.4vw,58px);line-height:1.03;letter-spacing:-.05em;margin:18px 0 14px}
+.arthero .lede{color:#b4bfd2;font-size:18.5px;max-width:760px}
+.article{max-width:860px;padding:10px 0 40px}
+.article h2{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.045em;line-height:1.06;margin:54px 0 12px}
+.article h3{font-size:19px;letter-spacing:-.03em;margin:26px 0 8px}
+.article p{color:#c3ccdc;font-size:15.5px;max-width:72ch}
+.article ol,.article ul{color:#c3ccdc;font-size:15.5px;max-width:70ch;padding-left:22px}
+.article li{margin:7px 0}
+.article strong{color:#eef3fb}
+.option{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));padding:24px 26px;margin:22px 0}
+.option .tag{display:inline-flex;gap:8px;align-items:center;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1px solid var(--line)}
+.tag.free{color:var(--green);border-color:rgba(145,242,125,.35)}
+.tag.ours{color:var(--cyan);border-color:rgba(73,217,255,.4)}
+.tag.limited{color:var(--warn);border-color:rgba(255,202,103,.35)}
+.option h3{margin-top:14px;font-size:22px}
+.cost{display:flex;gap:12px;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+.cost span{flex:0 0 auto;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:rgba(255,202,103,.08);border:1px solid rgba(255,202,103,.25);color:var(--warn);font-weight:900}
+.cost p{margin:2px 0 0;color:#9faabd;font-size:14px}
+.disclose{border:1px solid rgba(73,217,255,.3);border-radius:14px;background:rgba(73,217,255,.06);padding:14px 18px;margin:14px 0;color:#c9e9f7;font-size:14px}
+.disclose b{color:#eaf7ff}
+.tablewrap{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th{font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:#8792a6;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+td{padding:12px 14px;border-bottom:1px solid var(--line);color:#c3ccdc;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td b{color:#eef3fb}
+.faq details{border-bottom:1px solid var(--line);padding:17px 0}
+.faq summary{cursor:pointer;font-weight:850}
+.faq p{color:var(--muted);margin:9px 0 0}
+.final{text-align:center;padding:70px 0 84px;border-top:1px solid var(--line);margin-top:60px}
+.final h2{font-size:clamp(30px,4.4vw,50px);letter-spacing:-.05em;margin:0 0 10px}
+.final p{color:var(--muted);font-size:17px}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.updated{color:#8792a6;font-size:12.5px;margin-top:16px}
+.footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#8792a6;font-size:12px}
+.footerin{display:flex;justify-content:space-between;gap:20px}
+.footer a{color:#b8c1d1}
+@media(max-width:760px){.links a:not(.btn){display:none}.footerin{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Rules for sent emails in new Outlook: every option that works (2026)",
+      "description": "New Outlook removed rules for sent messages. The honest map of what still works: classic Outlook, the BCC-yourself workaround, Power Automate, and SentRules — with the real costs of each.",
+      "datePublished": "2026-09-10",
+      "dateModified": "2026-09-10",
+      "author": {"@type": "Person", "name": "John Johnson"},
+      "publisher": {"@type": "Organization", "name": "SentRules", "url": "https://sentrules.com/"},
+      "mainEntityOfPage": "https://sentrules.com/sent-mail-rules-new-outlook.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can new Outlook apply rules to sent messages?",
+          "acceptedAnswer": {"@type": "Answer", "text": "No. Rules in new Outlook and Outlook on the web apply only to messages you receive. The classic Outlook option \"Apply rule on messages I send\" does not exist in new Outlook, and Microsoft has not committed to a date for adding it."}
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a free way to file sent mail in new Outlook?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes. Add yourself as a CC or BCC on messages you want filed, then create an incoming rule that moves that copy to a folder. It works, and it is free — the costs are a duplicate of every message and, with CC, a recipient-visible copy of yourself in the headers."}
+        },
+        {
+          "@type": "Question",
+          "name": "Does staying on classic Outlook still work?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes — classic Outlook still has \"Apply rule on messages I send\" today. The catch is that classic runs on Microsoft's retirement schedule, not yours, and organizations are being migrated to new Outlook on an ongoing basis."}
+        },
+        {
+          "@type": "Question",
+          "name": "Does SentRules copy sent mail or move it?",
+          "acceptedAnswer": {"@type": "Answer", "text": "It moves. After Outlook confirms the send, SentRules moves the sent copy into the folder your rule names — one copy, in one place, with a 'Filed by SR' category on it. It does not leave a duplicate in Sent Items."}
+        },
+        {
+          "@type": "Question",
+          "name": "Does SentRules work on personal outlook.com accounts?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Yes — personal outlook.com accounts and Microsoft 365 accounts alike, because filing happens through Microsoft's own cloud interface after the send, not inside the Outlook program. Sends from desktop, web, and phone all file the same way."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body id="top">
+<header class="nav"><div class="wrap navin"><a class="brand" href="/"><img src="/logo-76.png" width="38" height="38" alt="SentRules"><span>SentRules</span></a><nav class="links"><a href="/">Home</a><a href="/about.html">About</a><a class="signin" href="https://app.sentrules.com/manager.html">Open SentRules</a><a class="btn primary" href="https://app.sentrules.com/start.html">Start free</a></nav></div></header>
+<main>
+
+<div class="wrap">
+<section class="arthero">
+  <div class="eyebrow">Honest guide · Updated September 2026</div>
+  <h1>Rules for sent emails in new Outlook: <span class="grad">every option that works</span></h1>
+  <p class="lede">Classic Outlook had a rule type called <strong>"Apply rule on messages I send."</strong> New Outlook doesn't — its rules act on received mail only, and Microsoft hasn't committed to a date for bringing the sent side back. If you filed sent mail into client or project folders, that system broke the day you were migrated. Here is the full map of what still works, including the ways that cost nothing. One of the options is ours, and we say so where it appears.</p>
+</section>
+
+<article class="article">
+
+<h2>What actually happened</h2>
+<p>In classic Outlook for Windows, the Rules wizard could start from <em>"Apply rule on messages I send"</em> — file a copy of outgoing mail by recipient, keep sent and received mail for a project in one folder, or drop a copy of everything you send into your Inbox for follow-up. In new Outlook and Outlook on the web, rules trigger only on messages you <strong>receive</strong>. There is no equivalent setting, no hidden toggle, and no server-side rule that files into folders. If you went looking and couldn't find it: you didn't miss a menu. It isn't there.</p>
+<p>You're also not alone. The public question threads about this on Microsoft's own support forums have accumulated dozens of "same question" votes and years of follow-ups, and community MVPs maintain long-running workaround guides because the searches never stop.</p>
+
+<h2>The four options, with their real costs</h2>
+
+<div class="option">
+  <span class="tag free">Free · works today</span>
+  <h3>1. Stay on classic Outlook</h3>
+  <p>Classic Outlook still has the sent-mail rule, and if you have the choice, keeping it is a perfectly reasonable answer — plenty of people have rolled back for exactly this reason.</p>
+  <div class="cost"><span>!</span><p>Classic runs on Microsoft's retirement clock, not yours. Migrations to new Outlook are rolling through organizations and personal machines on an ongoing basis, and when yours lands, this option ends with no appeal.</p></div>
+</div>
+
+<div class="option">
+  <span class="tag free">Free · the community workaround</span>
+  <h3>2. CC or BCC yourself, then file the copy</h3>
+  <p>The workaround the community has carried for years, and it genuinely works:</p>
+  <ol>
+    <li>On a message you want filed, add your own address to <strong>CC</strong> or <strong>BCC</strong>.</li>
+    <li>In new Outlook, create an ordinary incoming rule: <em>from you</em> (or matching a keyword you include) → <em>move to the folder you want</em>.</li>
+    <li>The copy that arrives back gets filed by that rule.</li>
+  </ol>
+  <div class="cost"><span>!</span><p>You keep a duplicate of every message — the filed copy is the one that arrived, while the original still sits in Sent Items. With CC, your recipients can see you copying yourself. And in new Outlook there's no automatic way to add the CC/BCC, so it's a per-message habit you have to keep.</p></div>
+</div>
+
+<div class="option">
+  <span class="tag limited">Free-ish · for flow builders</span>
+  <h3>3. Power Automate</h3>
+  <p>If you have a Microsoft 365 work account, Power Automate can watch your Sent Items and move messages matching conditions into folders. It's real, and for one or two simple patterns it can be enough.</p>
+  <div class="cost"><span>!</span><p>You're building and babysitting a flow per pattern — connections expire, flows silently suspend, and every new client folder means editing automation. It's a hobby project wearing a filing system's clothes, and it's generally not available on personal outlook.com accounts.</p></div>
+</div>
+
+<div class="option">
+  <span class="tag ours">Paid · this one is ours</span>
+  <h3>4. SentRules</h3>
+  <div class="disclose"><b>Disclosure: SentRules is our product.</b> This page exists because we built a tool for this exact gap — judge this option with that in mind, and note that the three options above are real and free.</div>
+  <p>SentRules is a hosted service — nothing to install. You connect your mailbox once and write rules like <em>"anything I send to acmelaw.com files to Clients / Acme Law."</em> You keep Outlook's normal Send button; after Outlook confirms the send, SentRules moves the sent copy into the folder your rule names and marks it with a <strong>"Filed by SR"</strong> category. Setup reads your existing folders and, where a company's mail is already filed, proposes the folder you already use. Because filing happens in Microsoft's cloud after the send, mail sent from desktop, web, and phone all files identically — something the old classic rule never did. It never requests permission to send mail, and it refuses to guess: if two rules conflict, your copy stays safely in Sent Items and it tells you.</p>
+  <p><strong>Its honest limits:</strong> it <em>moves</em> the sent copy rather than duplicating it — the message lives in the project folder, not in Sent Items too. It's for individual mailboxes (personal outlook.com or Microsoft 365); it doesn't do shared-mailbox or send-as filing today. It costs $39.99 a year after a 14-day free trial, and the free workarounds above may genuinely be enough if your volume is low.</p>
+</div>
+
+<h2>Which one fits you</h2>
+<div class="tablewrap">
+<table>
+<tr><th>If you…</th><th>Best fit</th><th>What it costs you</th></tr>
+<tr><td>Can keep classic Outlook and don't mind the clock</td><td><b>Stay on classic</b></td><td>Nothing, until Microsoft migrates you</td></tr>
+<tr><td>Send a few filed messages a week</td><td><b>CC/BCC yourself</b></td><td>Duplicates, header noise, a per-message habit</td></tr>
+<tr><td>Have a work account and like building automations</td><td><b>Power Automate</b></td><td>Flow maintenance, silent failures</td></tr>
+<tr><td>File sent mail daily into client or project folders</td><td><b>SentRules</b></td><td>$39.99/yr, and the sent copy moves out of Sent Items</td></tr>
+</table>
+</div>
+
+<h2>Questions people actually ask</h2>
+<div class="faq">
+<details><summary>Can new Outlook apply rules to sent messages at all?</summary><p>No. Rules in new Outlook and Outlook on the web run on received mail only. "Apply rule on messages I send" exists in classic Outlook and nowhere else, and Microsoft hasn't committed to a date for the sent side in new Outlook.</p></details>
+<details><summary>Will Microsoft bring it back?</summary><p>They haven't said no forever — they've said classic-only, with no committed date, for several years running. Plan around what exists, not the backlog.</p></details>
+<details><summary>Does SentRules copy or move the sent message?</summary><p>It moves. One copy, in the folder your rule names, wearing a "Filed by SR" category. If your system depends on everything also staying in Sent Items, the CC-yourself workaround fits you better today — that's the honest answer.</p></details>
+<details><summary>Does it work on a plain personal outlook.com account?</summary><p>Yes. Personal outlook.com and Microsoft 365 alike, and sends from your phone or the web file exactly like desktop sends, because filing happens server-side after the send.</p></details>
+<details><summary>What happens when no rule matches?</summary><p>Nothing — deliberately. Your sent copy stays in Sent Items, untouched. SentRules never guesses a folder, and conflicting rules leave the copy where it is and tell you, instead of flipping a coin with your mail.</p></details>
+</div>
+
+</article>
+</div>
+
+<section class="final"><div class="wrap">
+  <h2>Filing sent mail daily? <span class="grad">Get the rule back.</span></h2>
+  <p>One rule per client. Normal Send button. The sent copy files itself — watch the 35-second demo on the homepage.</p>
+  <div class="actions"><a class="btn primary" href="https://app.sentrules.com/start.html">Start free for 14 days</a><a class="btn ghost" href="/">See how it works</a></div>
+  <p class="updated">Written by John Johnson, founder of SentRules — a one-person company. Updated September 2026. Found something on this page that's out of date? Tell me: support@sentrules.com — I answer.</p>
+</div></section>
+
+</main>
+<footer class="footer"><div class="wrap footerin"><div>© 2026 SentRules · Independent service for Microsoft Outlook. Not affiliated with Microsoft.</div><div><a href="/about.html">About</a> · <a href="/sent-mail-rules-new-outlook.html">Sent-mail rules guide</a> · <a href="https://app.sentrules.com/privacy.html">Privacy</a> · <a href="https://app.sentrules.com/terms.html">Terms</a> · <a href="https://app.sentrules.com/support.html">Support</a></div></div></footer>
+</body>
+</html>
