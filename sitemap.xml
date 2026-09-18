@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://sentrules.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://sentrules.com/apply-rule-on-messages-i-send.html</loc><lastmod>2026-09-18</lastmod><priority>0.9</priority></url>
+  <url><loc>https://sentrules.com/sent-mail-rules-new-outlook.html</loc><lastmod>2026-09-18</lastmod><priority>0.9</priority></url>
   <url><loc>https://sentrules.com/pricing/</loc><priority>0.8</priority></url>
   <url><loc>https://app.sentrules.com/demo.html</loc><priority>0.6</priority></url>
 </urlset>
